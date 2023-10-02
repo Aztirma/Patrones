@@ -4,7 +4,7 @@ class Restaurant
     def create_menu
       Menu.new
     end
-  end
+end
   
   class ItalianRestaurant < Restaurant
     def create_menu
@@ -19,6 +19,26 @@ class Restaurant
   end
   
   # Bridge Pattern
+  
+  # Bridge Pattern
+
+class Delivery
+    def deliver
+        "Entrega no especificada"
+    end
+end
+  
+  class HomeDelivery < Delivery
+    def deliver
+      "Entrega a domicilio"
+    end
+  end
+  
+  class PickupDelivery < Delivery
+    def deliver
+      "Recoger en el restaurante"
+    end
+  end
   
   class Menu
     attr_reader :delivery
@@ -44,6 +64,7 @@ class Restaurant
     end
   end
   
+  
   # Command Pattern
   
   class Order
@@ -63,20 +84,6 @@ class Restaurant
   
     def execute
       "Pedido realizado para:\n" + @menu.display_menu
-    end
-  end
-  
-  # Implementación de Delivery
-  class Delivery
-    def deliver
-      raise NotImplementedError, "Las subclases deben implementar deliver"
-    end
-  end
-  
-  # Implementación concreta de HomeDelivery
-  class HomeDelivery < Delivery
-    def deliver
-      "Entrega a domicilio"
     end
   end
   
