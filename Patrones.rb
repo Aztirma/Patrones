@@ -18,7 +18,7 @@ end
     end
   end
   
-  # Bridge Pattern
+# Bridge Pattern
 
 class Delivery
     def deliver

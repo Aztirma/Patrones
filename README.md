@@ -24,12 +24,12 @@ end
 
 ```
 
+
 ### Bridge Pattern
 
-Utilizamos el patrón Bridge para separar la abstracción de los restaurantes de su implementación.. En este caso, la abstracción es la clase **`Menu`**, que tiene una implementación específica en las subclases **`ItalianMenu`** y **`MexicanMenu`**. La clase **`Menu`** también tiene una propiedad delivery que puede ser configurada en su constructor. Esto permite separar la idea del menú de la forma en que se entrega (por ejemplo, entrega a domicilio o entrega en el restaurante).
+El Patrón Bridge es un patrón de diseño estructural que utilizamos para separar la abstracción de su implementación. Esto significa que dividimos una clase en dos jerarquías independientes: una para la abstracción y otra para la implementación. Esto nos brinda flexibilidad y extensibilidad.
 
 ```ruby
-
 class Menu
   attr_reader :delivery
 
@@ -41,6 +41,15 @@ class Menu
     raise NotImplementedError, "Las subclases deben implementar display_menu"
   end
 end
+```
+
+En nuestro caso, la abstracción se refleja en la clase **`Menu`**, que representa la idea general de un menú de restaurante.
+
+#### **Implementación en Código**
+
+Nuestra implementación comienza con la clase **`Menu`**, que tiene una propiedad **`delivery`** que representa la implementación de entrega. **`Menu`** define un método abstracto **`display_menu`** que debe implementarse en las subclases.
+
+```ruby
 
 class ItalianMenu < Menu
   def display_menu
@@ -54,11 +63,26 @@ class MexicanMenu < Menu
   end
 end
 
+```
+
+Luego, tenemos subclases concretas como **`ItalianMenu`** y **`MexicanMenu`**, que implementan **`display_menu`** específicamente para menús italianos y mexicanos, respectivamente.
+
+#### **Implementación de Entrega**
+
+Para la implementación de entrega, comenzamos con la clase abstracta **`Delivery`**, que define el método abstracto **`deliver`**.
+
+```ruby
 class Delivery
   def deliver
     raise NotImplementedError, "Las subclases deben implementar deliver"
   end
 end
+
+```
+
+Luego, creamos subclases concretas como **`HomeDelivery`** y **`PickupDelivery`** para proporcionar implementaciones específicas de entrega, como "Entrega a domicilio" y "Recoger en el restaurante".
+
+```ruby
 
 class HomeDelivery < Delivery
   def deliver
@@ -74,6 +98,7 @@ end
 
 ```
 
+Este diseño nos permite separar claramente la abstracción de la implementación, lo que facilita la extensión del sistema sin afectar las clases existentes.
 ### Command Pattern
 
 Utilizamos el patrón Command para manejar los pedidos y las acciones relacionadas con ellos. Tenemos una clase **`Order`** que toma un comando (como **`PlaceOrderCommand`**) y ejecuta acciones como realizar el pedido y procesar el pago.
