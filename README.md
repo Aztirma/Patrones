@@ -139,4 +139,13 @@ end
 
 ```
 
+
+#### Diagrama de clases
+Como en el nombre aparece , el metodo command divide una accion en comandos para poder simplificar el trabajo , en este caso en la creacion de una orden 
+, en este caso PlaceOrderCommand seria el comando para que Order reciba y devuelva la orden en la funcion principal .
+
+![image](https://github.com/Aztirma/Patrones/assets/92898224/13bf5988-47e5-4959-ab95-cafda06f2d54)
+
+
 Con estos patrones de diseño, hemos logrado una aplicación más modular y flexible para gestionar pedidos de comida en línea con diferentes tipos de restaurantes, menús y opciones de entrega.
+
