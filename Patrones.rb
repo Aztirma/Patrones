@@ -66,6 +66,20 @@ class Restaurant
     end
   end
   
+  # Implementación de Delivery
+  class Delivery
+    def deliver
+      raise NotImplementedError, "Las subclases deben implementar deliver"
+    end
+  end
+  
+  # Implementación concreta de HomeDelivery
+  class HomeDelivery < Delivery
+    def deliver
+      "Entrega a domicilio"
+    end
+  end
+  
   # Clase principal Main
   
   class Main
@@ -76,7 +90,7 @@ class Restaurant
       # Crear el menú del restaurante italiano
       menu = italian_restaurant.create_menu
   
-      # Crear una instancia de entrega a domicilio
+      # Crear una instancia de entrega a domicilio (o cualquier otra subclase de Delivery)
       delivery = HomeDelivery.new
   
       # Crear un comando para realizar un pedido con el menú
