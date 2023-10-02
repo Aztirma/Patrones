@@ -29,7 +29,7 @@ end
 Utilizamos el patrón Bridge para separar la abstracción de los restaurantes de su implementación.. En este caso, la abstracción es la clase **`Menu`**, que tiene una implementación específica en las subclases **`ItalianMenu`** y **`MexicanMenu`**. La clase **`Menu`** también tiene una propiedad delivery que puede ser configurada en su constructor. Esto permite separar la idea del menú de la forma en que se entrega (por ejemplo, entrega a domicilio o entrega en el restaurante).
 
 ```ruby
-rubyCopy code
+
 class Menu
   attr_reader :delivery
 
@@ -79,7 +79,7 @@ end
 Utilizamos el patrón Command para manejar los pedidos y las acciones relacionadas con ellos. Tenemos una clase **`Order`** que toma un comando (como **`PlaceOrderCommand`**) y ejecuta acciones como realizar el pedido y procesar el pago.
 
 ```ruby
-rubyCopy code
+
 class Order
   def initialize(command)
     @command = command
