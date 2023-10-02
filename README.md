@@ -23,6 +23,12 @@ class Restaurant
 end
 
 ```
+#### Diagrama de clases 
+
+Este grafico seria la representacion de las clases , donde vemos que las clases menu depende de la clase Restaurant para que pueda crear objetos ,asi mismo 
+la clase Menu necesita de Delivery es donde se aplicara otro patron de diseño que se mostrara posteriormente.
+
+![image](https://github.com/Aztirma/Patrones/assets/92898224/a3ffa14c-6744-4f47-8036-ec549fcecae5)
 
 
 ### Bridge Pattern
@@ -99,6 +105,12 @@ end
 ```
 
 Este diseño nos permite separar claramente la abstracción de la implementación, lo que facilita la extensión del sistema sin afectar las clases existentes.
+
+#### Diagrama de clases 
+Como anteriormente mostramos el diagrama de clases de Restaurant , Aqui la clase Menu y la clase Delivery las cuales con el patron mostrado se uniran por un " puente " con el constructor de la clase Menu :
+
+![image](https://github.com/Aztirma/Patrones/assets/92898224/834c8f3e-7105-46b4-b47d-f90ccb5118a1)
+
 ### Command Pattern
 
 Utilizamos el patrón Command para manejar los pedidos y las acciones relacionadas con ellos. Tenemos una clase **`Order`** que toma un comando (como **`PlaceOrderCommand`**) y ejecuta acciones como realizar el pedido y procesar el pago.
