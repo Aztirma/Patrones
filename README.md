@@ -26,7 +26,7 @@ end
 
 ### Bridge Pattern
 
-Utilizamos el patrón Bridge para separar la abstracción de los restaurantes de su implementación. Tenemos una clase **`Menu`** como abstracción y una interfaz **`Delivery`** como implementación. Diferentes tipos de menús, como **`ItalianMenu`** y **`MexicanMenu`**, pueden vincularse a diferentes implementaciones de entrega, como **`HomeDelivery`** y **`PickupDelivery`**, mediante el puente.
+Utilizamos el patrón Bridge para separar la abstracción de los restaurantes de su implementación.. En este caso, la abstracción es la clase **`Menu`**, que tiene una implementación específica en las subclases **`ItalianMenu`** y **`MexicanMenu`**. La clase **`Menu`** también tiene una propiedad delivery que puede ser configurada en su constructor. Esto permite separar la idea del menú de la forma en que se entrega (por ejemplo, entrega a domicilio o entrega en el restaurante).
 
 ```ruby
 rubyCopy code
