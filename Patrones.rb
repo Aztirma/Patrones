@@ -2,7 +2,7 @@
 
 class Restaurant
     def create_menu
-      raise NotImplementedError, "Las subclases deben implementar create_menu"
+      Menu.new
     end
   end
   
@@ -12,35 +12,35 @@ class Restaurant
     end
   end
   
+  class MexicanRestaurant < Restaurant
+    def create_menu
+      MexicanMenu.new
+    end
+  end
+  
   # Bridge Pattern
   
   class Menu
     attr_reader :delivery
   
-    def initialize(delivery)
+    def initialize(delivery = nil)
       @delivery = delivery
     end
   
     def display_menu
-      raise NotImplementedError, "Las subclases deben implementar display_menu"
+      "Menú genérico"
     end
   end
   
   class ItalianMenu < Menu
     def display_menu
-      "Pizza, Pasta, Risotto"
+      "Pizza Margherita, Pasta Carbonara, Tiramisu"
     end
   end
   
-  class Delivery
-    def deliver
-      raise NotImplementedError, "Las subclases deben implementar deliver"
-    end
-  end
-  
-  class HomeDelivery < Delivery
-    def deliver
-      "Entrega a domicilio"
+  class MexicanMenu < Menu
+    def display_menu
+      "Tacos, Quesadillas, Guacamole"
     end
   end
   
@@ -65,4 +65,36 @@ class Restaurant
       "Pedido realizado para:\n" + @menu.display_menu
     end
   end
- 
+  
+  # Clase principal Main
+  
+  class Main
+    def self.run
+      # Crear una instancia de un restaurante italiano
+      italian_restaurant = ItalianRestaurant.new
+  
+      # Crear el menú del restaurante italiano
+      menu = italian_restaurant.create_menu
+  
+      # Crear una instancia de entrega a domicilio
+      delivery = HomeDelivery.new
+  
+      # Crear un comando para realizar un pedido con el menú
+      order_command = PlaceOrderCommand.new(menu)
+  
+      # Crear una orden utilizando el comando de pedido
+      order = Order.new(order_command)
+  
+      # Imprimir mensajes informativos
+      puts "Bienvenido al restaurante italiano."
+      puts "Menú disponible:"
+      puts menu.display_menu
+      puts "Realizando pedido..."
+      puts order.execute_order
+      puts "Entrega seleccionada: #{delivery.deliver}"
+    end
+  end
+  
+  # Ejecutar la aplicación
+  Main.run
+  
