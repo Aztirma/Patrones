@@ -84,11 +84,17 @@ class Restaurant
   
   class Main
     def self.run
-      # Crear una instancia de un restaurante italiano
-      italian_restaurant = ItalianRestaurant.new
+      # Lista de diferentes tipos de restaurantes
+      restaurant_types = [ItalianRestaurant, MexicanRestaurant]
   
-      # Crear el menú del restaurante italiano
-      menu = italian_restaurant.create_menu
+      # Selecciona aleatoriamente un tipo de restaurante
+      selected_restaurant = restaurant_types.sample
+  
+      # Crea una instancia del restaurante seleccionado
+      restaurant = selected_restaurant.new
+  
+      # Crea el menú del restaurante
+      menu = restaurant.create_menu
   
       # Crear una instancia de entrega a domicilio (o cualquier otra subclase de Delivery)
       delivery = HomeDelivery.new
@@ -100,7 +106,7 @@ class Restaurant
       order = Order.new(order_command)
   
       # Imprimir mensajes informativos
-      puts "Bienvenido al restaurante italiano."
+      puts "Bienvenido al restaurante: #{selected_restaurant}"
       puts "Menú disponible:"
       puts menu.display_menu
       puts "Realizando pedido..."
